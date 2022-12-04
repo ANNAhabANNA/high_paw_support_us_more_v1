@@ -20,4 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # Allauth URLs
     path('accounts/', include('allauth.urls')),
+    # Home page URL
+    path('', include('home.urls')),
 ]

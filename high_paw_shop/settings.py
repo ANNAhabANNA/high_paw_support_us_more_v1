@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'allauth.account',
     # Handles logging in via social media providers
     'allauth.socialaccount',
+    # Handles home page 
+    'home',
 
 ]
 
@@ -63,7 +65,12 @@ ROOT_URLCONF = 'high_paw_shop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            # Adds route templates directory
+            os.path.join(BASE_DIR, 'templates'),
+            # Adds custom allauth directory to the template dirs setting
+            os.path.join(BASE_DIR, 'templates', 'allauth'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -89,8 +96,10 @@ AUTHENTICATION_BACKENDS = [
 # Used by the social account app to create the proper callback URLs when connecting via social media accounts
 SITE_ID = 1
 
+
 # Temporarily logs confirmation emails to any new accounts to the console so that the confirmation links can be obtained
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 # Tells allauth to allow authentication using either usernames or emails
 # Configures email to be required to register for the site
