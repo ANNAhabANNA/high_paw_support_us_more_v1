@@ -17,6 +17,12 @@
     {% block corecss %}
         <!--Bootstrap CSS-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <!--Base CSS-->
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <!--Fontawesome CSS-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" >
     {% endblock %}
 
     {% block extra_css %}
@@ -37,71 +43,83 @@
   </head>
   <body class="d-flex flex-column h-100">
     <header class="container-fluid fixed-top">
-      <!--Navbar-->
       <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
         <div class="container">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
-                <div class="text-center">
-                  <p class="my-1">
-                    <a class="nav-link" href="#"><i class="fas fa-paw"></i>
-                    Home<span class="sr-only">(current)</span></a>
-                  </p>
-                </div>
-              </li>
-              <li class="nav-item">
-                <!--Parent Menu-->
-                <li class="list-inline-item dropdown">
-                  <a class="text-purple nav-link" href="#" id="user-choice" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <div class="text-center">
-                      <div><i class="fas fa-duotone fa-user fa-lg"></i>
-                      </div>
-                      <p class="my-1">My Account</p>
-                    </div>
-                  </a>
-                  <div class="dropdown-menu border-1" aria-labelledby="user-choice">
-                    <!--Django tags for user/admin authentication-->
-                    {% if request.user.is_authenticated %}
-                      {% if request.user.is_superuser %}
-                        <a href="#" class="dropdown-item">Product Management</a>
-                      {% endif %}
-                        <a href="#" class="dropdown-item">My Profile</a>
-                        <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                      {% else %}
-                        <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                        <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
-                    {% endif %}
+            <div class="col-12 my-auto py-1 py-lg-0">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <div class="text-center">
+                    <p class="my-1">
+                      <a class="nav-link" href="{% url 'home' %}"><i class="fas fa-paw"></i>
+                      Home<span class="sr-only">(current)</span></a>
+                    </p>
                   </div>
                 </li>
-                <!--Shopping bag link-->
-                <li class="list-inline-item">
-                  <a class="{% if gross_total %}text-info font-weight-bold{% else %}text-success{% endif %} nav-link" href="">
-                    <div class="text-center">
-                      <div><i class="fas fa-shopping-bag fa-lg"></i></div>
-                      <p class="my-0">
-                        <!--Django tags for gross total-->
-                        {% if gross_total %}
-                          eur{{ gross_total|floatformat:2 }}
-                        {% else %}
-                          eur0.00
+                <li class="nav-item">
+                  <li class="list-inline-item dropdown">
+                    <a class="nav-link" href="#" id="user-choice" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <div class="text-center">
+                        <div><i class="fas fa-duotone fa-user fa-lg"></i>
+                        </div>
+                        <p class="my-1">My Account</p>
+                      </div>
+                    </a>
+                    <div class="dropdown-menu border-1" aria-labelledby="user-choice">
+                      <!--Django tags for user/admin authentication-->
+                      {% if request.user.is_authenticated %}
+                        {% if request.user.is_superuser %}
+                          <a href="#" class="dropdown-item">Product Management</a>
                         {% endif %}
-                      </p>
+                          <a href="#" class="dropdown-item">My Profile</a>
+                          <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                        {% else %}
+                          <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                          <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                      {% endif %}
                     </div>
-                  </a>
+                  </li>
+                  <!--Shopping bag link-->
+                  <li class="list-inline-item">
+                    <!--Django tags for change in font and color of gross total-->
+                    <a class="{% if gross_total %}text-success font-weight-bold{% else %}text-black{% endif %} nav-link" href="">
+                      <div class="text-center">
+                        <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+                        <p class="my-0">
+                          <!--Django tags for gross total-->
+                          {% if gross_total %}
+                            eur {{ gross_total|floatformat:2 }}
+                          {% else %}
+                            eur 0.00
+                          {% endif %}
+                        </p>
+                      </div>
+                    </a>
+                  </li>
                 </li>
-              </li>
-            </ul>
-            <div class="col-12 col-sm-6 my-auto py-0 py-lg-0">
-              <form method="GET" action="">
-                <div class="input-group mb-3">
-                  <input class="form-control border border-block rounded-1" type="text" name="q" placeholder="Find a Wagging Tail">
-                  <div class="input-group-append"><button class="btn btn-warning"><i class="fas fa-search"></i></button></div>
-                </div>
-              </form>
+                <!--Logo-->
+                <li class="list-inline-item">
+                  <div class="col-12 my-auto py-1 py-lg-0">
+                    <a href="{% url 'home' %}" class="nav-link main-logo-link">
+                        <h2 class="logo-font my-0"><strong>High</strong>Paw</h2>
+                    </a>
+                  </div>
+                </li>
+                <!--Searchbar-->
+                <li class="list-inline-item">
+                  <div class="col-12 col-lg-12 my-auto py-0 py-lg-0">
+                    <form method="GET" action="">
+                      <div class="input-group mb-3">
+                        <input class="form-control border border-block rounded-1" type="text" name="q" placeholder="Find a Wagging Tail">
+                        <div class="input-group-append"><button class="btn btn-warning"><i class="fas fa-search"></i></button></div>
+                      </div>
+                    </form>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

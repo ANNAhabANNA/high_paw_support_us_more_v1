@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet');
+
+body {
+    background: url('/media/dog-paw-human-hand.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: calc(100vh - 164px);
+    color: #555;
+    font-family: 'Lato';
+}
+
+.content-container {
+  margin-top: 200px;
+}
+
+/*Navbar*/
+.top-nav-collapse {
+  background-color: #635147 !important;
+}
+
+.navbar {
+    background-color: #635147 !important;
+}
+
+.logo-font {
+    text-transform: uppercase;
+}
+
+/*Index.html text*/
+h1 {
+  letter-spacing: 8px;
+  color: #F5F5DC;
+}
+
+h5 {
+  letter-spacing: 3px;
+  color:#F5F5DC;
+
+}
+
+.hr-light {
+  border-top: 2px solid #fff;
+  width: 300px;
+}
