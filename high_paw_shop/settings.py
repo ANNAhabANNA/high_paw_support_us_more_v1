@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     # Handles home page 
     'home',
+    # Handles products page
+    'products',
 
 ]
 
