@@ -1,6 +1,29 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
 {% block content %}
-    <h1 class="display-4 text-success">It works!</h1>
+    <div class="container h-100">
+        <div class="col-md-12 mb-4 text-center">
+            <h1 class="h1-reponsive text-uppercase font-weight-bold mb-0 pt-md-5 pt-5"><strong>High Paw</strong></h1>
+            <hr class="hr-light my-4">
+            <h5 class="text-uppercase mb-4"><strong>Support Us More in our work of saving dogs' lives</strong></h5>
+            <a href="#" class="btn btn-warning btn-lg text-uppercase" role="button">Shop Now</a>
+          </div>
+        
+        <div class="row h-100 text-center">
+            <div class="col-12 col-md-12 my-auto">
+                <h1 class="display-4 logo-font text-black">
+                    Thanks to your purchase, we can carry out our work of improving the welfare of dogs all across Ireland
+                </h1>
+            </div>
+        </div>
+    </div>
 {% endblock %}
