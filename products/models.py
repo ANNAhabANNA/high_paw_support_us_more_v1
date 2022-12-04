@@ -4,6 +4,10 @@ class Category(models.Model):
     ''' 
     Gives products a category
     '''
+    # Fixes the spelling issue on the category model by adding a special metaclass
+    class Meta:
+        verbose_name_plural = 'Categories'
+
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
 
