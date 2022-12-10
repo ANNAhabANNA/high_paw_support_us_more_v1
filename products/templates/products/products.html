@@ -1,5 +1,3 @@
-
-
 {% extends "base.html" %}
 {% load static %}
 
@@ -10,6 +8,12 @@
 
 {% block content %}
     <div class="container-fluid content-container">
+        <div class="row">
+            <div class="col text-center mt-3">
+                <h1 class="logo-font">Products</h1>
+                <hr class="hr-light w-50 mb-2">
+            </div>
+        </div>
         <div class="row">
             {% for product in products %} 
             <div class="col-lg-6">
