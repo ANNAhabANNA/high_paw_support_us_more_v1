@@ -14,42 +14,56 @@
                 <hr class="hr-light w-50 mb-2">
             </div>
         </div>
-        <div class="row">
-            {% for product in products %} 
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-body">
+        
+        <div class="d-flex justify-content-center row mt-5">
+            <div class="col-md-10 my-5">
+                {% for product in products %} 
+                <div class="row p-2 bg-white border rounded my-4">
+                    <!--Image-->
+                    <div class="col-md-3 mt-4">
                         {% if product.image %}      
-                            <img class="img-fluid rounded card-img-top" src="{{ product.image.url }}" alt="{{ product.description }}">
+                        <img class="img-fluid img-responsive rounded product-image" src="{{ product.image.url }}" alt="{{ product.description }}">
                         {% else %}
-                            <img class="img-fluid rounded card-img-top" src="{{ MEDIA_URL }}noimage.jpg" alt="{{ product.description }}">
+                        <img class="img-fluid img-responsive rounded product-image" src="{{ MEDIA_URL }}noimage.jpg" alt="{{ product.description }}">
                         {% endif %}
-                        <h5 class="card-title text-uppercase text-dark">{{product.name}}</h5>
-                        <div class="card-title pt-0 text-left">
-                            <div class="row">
-                                <div class="col">
-                                    <p class="lead mb-0 text-left font-weight-bold">eur {{ product.price }}</p>
-                                    {% if product.rating %}
-                                        <small class="text-success font-weight-bold"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
-                                    {% else %}
-                                        <small class="font-weight-bold">No Rating</small>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                        <form class="form" action="#" method="POST">
-                            <div class="form-row">
-                                <div class="col-12">
-                                    <a class="btn btn-warning btn-lg" href="#">View</a>
-                                </div>
-                                <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                            </div>
-                        </form>
                     </div>
-                
+                    <div class="col-md-6 mt-1">
+                        <!--Name-->
+                        <div class="mt-1 mb-1 spec-1"> 
+                            <h5 class="card-title text-uppercase text-dark">{{product.name}}</h5>
+                        </div>
+                        <!--Rating-->
+                        <div class="mt-1 mb-1 spec-1"> 
+                            {% if product.rating %}
+                            <small class="text-success font-weight-bold"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
+                            {% else %}
+                            <small class="font-weight-bold">No Rating</small>
+                            {% endif %}
+                        </div>
+                        <!--Price-->
+                        <div class="d-flex flex-row align-items-center">
+                            <p class="lead mb-0 text-left font-weight-bold">eur {{ product.price }}</p>
+                        </div>
+                        <h6 class="text-success">Free shipping for orders over 50 eur</h6>
+                    </div>
+                    <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                        <div class="d-flex flex-column mt-4">
+                            <!--View button-->
+                            <form class="form" action="#" method="POST">
+                                <div class="form-row">
+                                    <div class="col-12">
+                                        <a class="btn btn-warning btn-lg btn-block" href="{% url 'product_detail' product.id %}">View</a>
+                                    </div>
+                                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                </div>
+                            </form>
+                            <!--Add to whishlist button-->
+                            <button class="btn btn-outline-warning btn-sm mt-2" type="button">Add to wishlist</button>
+                        </div>
+                    </div>                   
                 </div>
-            </div>
-           {% endfor %}
-        </div>
+                {% endfor %}
+            </div>   
+        </div>   
     </div>
 {% endblock %}

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+  
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid content-container">
+    
+    <div class="row">
+        <div class="col-12 col-md-10 col-lg-8 offset-lg-2">
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-md-12 p-4">
+                        {% if product.image %}
+                        <img class="img-fluid rounded" src="{{ product.image.url }}" alt="{{ product.description }}">
+                        {% else %}
+                        <img class="img-fluid rounded card-img-top" src="{{ MEDIA_URL }}noimage.jpg" alt="{{ product.description }}">
+                        {% endif %}
+                        <h5 class="card-title text-uppercase text-dark pt-4">{{product.name}}</h5>
+                        <p class="card-title  text-dark">{{product.description}}</p>  
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card-body">
+                            <p class="card-text lead mb-0 text-left font-weight-bold">{{ product.price }} euro</p>  
+                            <form class="form" action="#" method="POST">
+                                {% csrf_token %}
+                                <div class="form-row">
+                                    <div class="col-12">
+                                        <p class="mt-3"><strong>Quantity:</strong></p>
+                                      
+                                    </div>
+
+                                    <div class="col-12">
+                                        <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 mt-5">
+                                            <span class="icon">
+                                                <i class="fas fa-chevron-left"></i>
+                                            </span>
+                                            <span class="text-uppercase">Keep Supporting</span>
+                                        </a>
+                                    
+                                        <button data-product="{{product.id}}" data-action="add" class="btn btn-warning btn-lg update-cart">Add to Bag</button>
+                                    </div>
+                                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                </div>
+                            </form>
+                        </div>
+                        {% if request.user.is_superuser %}
+                            <small class="ml-3">
+                                <a href="#">Edit</a> | 
+                                <a class="text-danger" href="#">Delete</a>
+                            </small>
+                        {% endif %}
+                    </div>
+                </div>  
+            </div> 
+        </div>    
+    </div>
+</div>
+{% endblock %}
