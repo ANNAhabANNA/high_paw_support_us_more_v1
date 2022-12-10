@@ -1,0 +1,40 @@
+
+
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block page_header %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid content-container">
+        <div class="row">
+            {% for product in products %} 
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        {% if product.image %}      
+                            <img class="img-fluid rounded card-img-top" src="{{ product.image.url }}" alt="{{ product.description }}">
+                        {% else %}
+                            <img class="img-fluid rounded card-img-top" src="{{ MEDIA_URL }}noimage.jpg" alt="{{ product.description }}">
+                        {% endif %}
+                        <h5 class="card-title text-uppercase text-dark">{{product.name}}</h5>
+                        <form class="form" action="#" method="POST">
+                            
+                            <div class="form-row">
+                                <div class="col-12">
+                                    <a class="btn btn-warning btn-lg" href="#">View</a>
+                                </div>
+                                <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                            </div>
+                        </form>
+                    </div>
+                
+                </div>
+            </div>
+           {% endfor %}
+        </div>
+    </div>
+{% endblock %}
