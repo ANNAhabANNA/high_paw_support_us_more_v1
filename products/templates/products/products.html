@@ -21,8 +21,19 @@
                             <img class="img-fluid rounded card-img-top" src="{{ MEDIA_URL }}noimage.jpg" alt="{{ product.description }}">
                         {% endif %}
                         <h5 class="card-title text-uppercase text-dark">{{product.name}}</h5>
+                        <div class="card-title pt-0 text-left">
+                            <div class="row">
+                                <div class="col">
+                                    <p class="lead mb-0 text-left font-weight-bold">eur {{ product.price }}</p>
+                                    {% if product.rating %}
+                                        <small class="text-success font-weight-bold"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
+                                    {% else %}
+                                        <small class="font-weight-bold">No Rating</small>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
                         <form class="form" action="#" method="POST">
-                            
                             <div class="form-row">
                                 <div class="col-12">
                                     <a class="btn btn-warning btn-lg" href="#">View</a>
