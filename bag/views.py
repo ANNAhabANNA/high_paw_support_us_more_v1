@@ -1,4 +1,7 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
+from django.contrib import messages
+
+from products.models import Product
 
 # Create your views here.
 
@@ -11,6 +14,7 @@ def review_bag(request):
 def add_product(request, item_id):
     """ Add a quantity of the specified product to the shopping bag """
 
+    product = get_object_or_404(Product, pk=item_id)
     # Gets quantity from the view.
     quantity = int(request.POST.get('quantity'))
 
@@ -38,6 +42,7 @@ def add_product(request, item_id):
             bag[item_id] += quantity
         else:
             bag[item_id] = quantity
+            messages.success(request, f'Added {product.name} to your bag')
 
     # Overwrite the variable in the session with the updated version.
     request.session['bag'] = bag
@@ -46,6 +51,7 @@ def add_product(request, item_id):
 def adjust_product(request, item_id):
     """Adjust the quantity of the specified product to the specified amount"""
 
+    product = Product.objects.get(pk=item_id)
     quantity = int(request.POST.get('quantity'))
     size = None
     if 'product_size' in request.POST:

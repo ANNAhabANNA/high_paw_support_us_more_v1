@@ -46,7 +46,7 @@
                                             <td class="py-3">
                                                 <p class="my-0">{{ item.product.price }} euro</p>
                                             </td>
-                                            <td class="py-3 w-25">
+                                            <td class="py-3">
                                                 <!--Quantity button-->
                                                 <form class="form update-form" method="POST" action="{% url 'adjust_product' item.item_id %}">
                                                     {% csrf_token %}
@@ -86,7 +86,7 @@
                                                 <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}" data-product_size="{{ item.size }}"><small>Remove</small></a>
                                             </td>
                                             <td class="py-3">
-                                                <p class="my-0">${{ item.product.price | calculate_subtotal:item.quantity }}</p>
+                                                <p class="my-0">eur {{ item.product.price | calculate_subtotal:item.quantity }}</p>
                                             </td>
                                         </tr>
                                         {% endfor %}
