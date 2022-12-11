@@ -83,11 +83,18 @@
                                         {% endfor %}
                                         <tr>
                                             <td colspan="5" class="pt-5 text-right">
-                                                <h6><strong>Bag Total: {{ grand_total|floatformat:2 }} euro</strong></h6>
+                                                <h6><strong>Bag Total: eur {{ total|floatformat:2 }}</strong></h6>
+                                                <h6>Delivery: eur {{ shipping|floatformat:2 }}</h6>
+                                                <h4 class="mt-4"><strong>Grand Total: eur {{ grand_total|floatformat:2 }}</strong></h4>
+                                                {% if free_shipping_delta > 0 %}
+                                                    <p class="mb-1 text-danger">
+                                                        You could get free shipping by spending just <strong>eur {{ free_shipping_delta }}</strong> more!
+                                                    </p>
+                                                {% endif %}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td colspan="5" class="text-right">
+                                            <td colspan="5" class="text-left">
                                                 <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
                                                     <span class="icon">
                                                         <i class="fas fa-chevron-left"></i>
