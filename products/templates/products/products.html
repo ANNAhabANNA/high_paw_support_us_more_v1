@@ -21,10 +21,14 @@
                 <div class="row p-2 bg-white border rounded my-4">
                     <!--Image-->
                     <div class="col-md-3 mt-4">
-                        {% if product.image %}      
-                        <img class="img-fluid img-responsive rounded product-image" src="{{ product.image.url }}" alt="{{ product.description }}">
+                        {% if product.image %}
+                        <a href="{% url 'product_detail' product.id %}">     
+                            <img class="img-fluid img-responsive rounded product-image" src="{{ product.image.url }}" alt="{{ product.description }}">
+                        </a>
                         {% else %}
-                        <img class="img-fluid img-responsive rounded product-image" src="{{ MEDIA_URL }}noimage.jpg" alt="{{ product.description }}">
+                        <a href="{% url 'product_detail' product.id %}">
+                            <img class="img-fluid img-responsive rounded product-image" src="{{ MEDIA_URL }}noimage.jpg" alt="{{ product.description }}">
+                        </a>
                         {% endif %}
                     </div>
                     <div class="col-md-6 mt-1">

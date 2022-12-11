@@ -15,9 +15,13 @@
                 <div class="row no-gutters">
                     <div class="col-md-12 p-4">
                         {% if product.image %}
-                        <img class="img-fluid rounded" src="{{ product.image.url }}" alt="{{ product.description }}">
+                        <a href="{{ product.image.url }}" target="_blank">
+                            <img class="img-fluid rounded" src="{{ product.image.url }}" alt="{{ product.description }}">
+                        </a>
                         {% else %}
-                        <img class="img-fluid rounded card-img-top" src="{{ MEDIA_URL }}noimage.jpg" alt="{{ product.description }}">
+                        <a href="{{ product.image.url }}" target="_blank">
+                            <img class="img-fluid rounded card-img-top" src="{{ MEDIA_URL }}noimage.jpg" alt="{{ product.description }}">
+                        </a>
                         {% endif %}
                         <h5 class="card-title text-uppercase text-dark pt-4">{{product.name}}</h5>
                         <p class="card-title  text-dark">{{product.description}}</p>  
