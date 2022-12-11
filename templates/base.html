@@ -112,7 +112,7 @@
               <!--Shopping bag link-->
               <li class="nav-item">
                 <!--Django tags for change in font and color of gross total-->
-                <a class="{% if gross_total %}text-success font-weight-bold{% else %}text-black{% endif %} nav-link" href="">
+                <a class="{% if gross_total %}text-success font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'review_bag' %}">
                   <div class="text-center">
                     <div><i class="fas fa-shopping-bag fa-lg"></i></div>
                     <p class="my-0">
