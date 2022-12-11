@@ -117,8 +117,8 @@
                     <div><i class="fas fa-shopping-bag fa-lg"></i></div>
                     <p class="my-0">
                       <!--Django tags for gross total-->
-                      {% if gross_total %}
-                        eur {{ gross_total|floatformat:2 }}
+                      {% if grand_total %}
+                        eur {{ grand_total|floatformat:2 }}
                       {% else %}
                         eur 0.00
                       {% endif %}

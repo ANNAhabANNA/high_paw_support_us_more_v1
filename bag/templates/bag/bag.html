@@ -83,7 +83,7 @@
                                         {% endfor %}
                                         <tr>
                                             <td colspan="5" class="pt-5 text-right">
-                                                <h6><strong>Bag Total: {{ total|floatformat:2 }} euro</strong></h6>
+                                                <h6><strong>Bag Total: {{ grand_total|floatformat:2 }} euro</strong></h6>
                                             </td>
                                         </tr>
                                         <tr>
@@ -94,7 +94,7 @@
                                                     </span>
                                                     <span class="text-uppercase">Keep Supporting</span>
                                                 </a>
-                                                <a href="{% url 'checkout' %}" class="btn btn-warning btn-block btn-lg" role="button">
+                                                <a href="#" class="btn btn-warning btn-block btn-lg" role="button">
                                                     <span class="text-uppercase">Secure Checkout</span>
                                                     <span class="icon">
                                                         <i class="fas fa-lock"></i>
