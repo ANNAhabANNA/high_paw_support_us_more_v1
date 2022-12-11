@@ -9,12 +9,15 @@
 {% block content %}
 <section class="h-100">
     <div class="container content-container">
+        <div class="row">
+            <div class="col text-center mt-3">
+                <h1 class="logo-font">Shopping Bag</h1>
+                <hr class="hr-light w-50 mb-2">
+            </div>
+        </div>
         <div class="col-12">
             <div class="card rounded-3 mb-4">
                 <div class="card-body p-4">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h3 class="fw-normal mb-0 text-black">High Paw Support Us More Cart</h3>
-                    </div>
                     <!-- The following code is taken from Boutique Ado project-->
                     <div class="row">
                         <div class="col">
@@ -110,7 +113,7 @@
                                                     </span>
                                                     <span class="text-uppercase">Keep Supporting</span>
                                                 </a>
-                                                <a href="#" class="btn btn-warning btn-block btn-lg" role="button">
+                                                <a href="{% url 'checkout' %}" class="btn btn-warning btn-block btn-lg" role="button">
                                                     <span class="text-uppercase">Secure Checkout</span>
                                                     <span class="icon">
                                                         <i class="fas fa-lock"></i>

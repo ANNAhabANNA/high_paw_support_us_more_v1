@@ -20,12 +20,14 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # Allauth URLs
+    # Allauth
     path('accounts/', include('allauth.urls')),
-    # Home page URL
+    # Home page
     path('', include('home.urls')),
-    # Products page URL
+    # Products page
     path('products/', include('products.urls')),
-    # Shopping bag page URL
+    # Shopping bag page
     path('bag/', include('bag.urls')),
+    # Checkout page 
+    path('checkout/', include('checkout.urls')),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

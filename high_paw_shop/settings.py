@@ -54,6 +54,9 @@ INSTALLED_APPS = [
     # Handles checkout page
     'checkout',
 
+    # Other
+    'crispy_forms',
+
 ]
 
 MIDDLEWARE = [
@@ -67,6 +70,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'high_paw_shop.urls'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 TEMPLATES = [
     {
@@ -86,9 +91,14 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 # List of context processors
-                'django.template.context_processors.media',
+                'django.template.context_processors.media',  # allows access to no-image file
                 'bag.contexts.bag_contents',
             ],
+            # Contains the tags avalable in all crispy form templates by default.
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]
