@@ -49,8 +49,10 @@ INSTALLED_APPS = [
     'home',
     # Handles products page
     'products',
-    # Handles checkout page
+    # Handles shopping bag page
     'bag',
+    # Handles checkout page
+    'checkout',
 
 ]
 
