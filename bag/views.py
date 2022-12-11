@@ -16,13 +16,28 @@ def add_product(request, item_id):
 
     redirect_url = request.POST.get('redirect_url')
 
+    # Gets product size from the view.
+    size = None
+    if 'product_size' in request.POST:
+        size = request.POST['product_size']
+
     # Allows us to store the contents of the shopping bag in the HTTP session.
     bag = request.session.get('bag', {})
 
-    if item_id in list(bag.keys()):
-        bag[item_id] += quantity
+    # Makes some adjustments to the structure of the bag if a product with sizes is being added.
+    if size:
+        if item_id in list(bag.keys()):
+            if size in bag[item_id]['items_by_size'].keys():
+                bag[item_id]['items_by_size'][size] += quantity
+            else:
+                bag[item_id]['items_by_size'][size] = quantity
+        else:
+            bag[item_id] = {'items_by_size': {size: quantity}}
     else:
-        bag[item_id] = quantity
+        if item_id in list(bag.keys()):
+            bag[item_id] += quantity
+        else:
+            bag[item_id] = quantity
 
     # Overwrite the variable in the session with the updated version.
     request.session['bag'] = bag
