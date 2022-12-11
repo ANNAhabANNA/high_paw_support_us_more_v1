@@ -10,6 +10,26 @@ def all_products(request):
 
     products = Product.objects.all()
     query = None
+    sort = None
+    direction = None
+
+    # Sorting functionality from Boutique Ado project
+    if request.GET:
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+
+            # case-sensitive sorting
+            if sortkey == 'name':
+                sortkey = 'lower_name'
+                products = products.annotate(lower_name=Lower('name'))
+
+            # descending sorting
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
+            products = products.order_by(sortkey)
 
     # Search bar functionality from Boutique Ado project
     if request.GET:
@@ -22,9 +42,13 @@ def all_products(request):
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
 
+    # Returns the current sorting methodology to the template
+    current_sorting = f'{sort}_{direction}'
+
     context = {
         'products': products,
         'search_term': query,
+        'current_sorting': current_sorting,
     }
 
     return render(request, 'products/products.html', context)
