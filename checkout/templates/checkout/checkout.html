@@ -3,7 +3,7 @@
 {% load bag_tools %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
 
 {% block page_header %}
@@ -12,6 +12,15 @@
 
 {% block content %}
 <section class="h-100">
+    <div id="loading-overlay">
+        <h1 class="text-light logo-font loading-cogs">
+            <span class="icon">
+                <i class="fa-solid fa-cog fa-spin"></i>
+                <i class="fa-solid fa-cog fa-spin fa-spin-reverse"></i>
+                <i class="fa-solid fa-cog fa-spin"></i>
+            </span>
+        </h1>
+    </div>
     <div class="container content-container">
         <div class="row">
             <div class="col text-center mt-3">
@@ -127,9 +136,9 @@
                         <div class="table-responsive rounded"></div>
                         <a href="{% url 'review_bag' %}" class="btn btn-outline-black rounded-0 btn-lg">
                             <span class="icon">
-                                <i class="fas fa-chevron-left"></i>
+                                <i class="fas fa-chevron-left text-success"></i>
                             </span>
-                            <span class="text-uppercase">Adjust Bag</span>
+                            <span class="text-uppercase text-success">Adjust Bag</span>
                         </a>
                     </div>
                 </div>
@@ -137,6 +146,7 @@
         </div>
     </div>
 </section>
+
 {% endblock %}
 
 {% block postloadjs %}
