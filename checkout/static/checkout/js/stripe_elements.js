@@ -68,7 +68,7 @@ form.addEventListener('submit', function(ev) {
 
     // The view updates the payment intent and returns a 200 response.
     // Calls the confirm card payment method from stripe and submits the form.
-    $.post(url, postData).done(function () {
+    $.post(url, postData).done(function() {
         stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: card,
