@@ -69,6 +69,47 @@
                                 </table>
                             </div>
                         </div>
+                        <div class="col-10 col-lg-8 m-5">
+                            <p class="text-muted">Wishlist</p>
+                            <div class="order-history table-responsive">
+                                <table class="table table-sm table-borderless">
+                                    <thead>
+                                        <tr>
+                                            <th>Item image</th>
+                                            <th>Description</th>
+                                            <th>Price</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% if wishlist %}
+                                        {% for item in wishlist %}
+                                            <tr>
+                                                <td>
+                                                    <a href="{% url 'product_detail' item.id %}">
+                                                        {% if item.image %}
+                                                        <img class="img-fluid d-block p-2" src="{{ item.image.url }}" alt="{{ item.name }}">
+                                                        {% else %}
+                                                        <img class="img-fluid d-block p-2" src="{{ MEDIA_URL}}noimage.png" alt="{{ item.name }}">
+                                                        {% endif %}
+                                                    </a>
+                                                </td>
+                                                <td>{{ item.name }}</td>
+                                                <td>{{ item.price }} euro</td>
+                                                <td>
+                                                     <a class="text-muted" href="{% url 'add_to_wishlist' item.id %}" role="button"><i
+                                                        class="fas fa-trash"> </i> Remove from
+                                                    wishlist</a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        {% else %}
+                                            <p>You have not added any items to your wishlist yet!</p>
+                                        {% endif %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col">

@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponseRedirect
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
+from django.contrib.auth.decorators import login_required
 
 from .models import Product, Category
 
@@ -73,3 +74,23 @@ def product_detail(request, product_id):
     }
 
     return render(request, 'products/product_detail.html', context)
+
+@login_required
+def add_to_wishlist(request, product_id):
+    ''' A view to add or remove products from user's wishlist'''
+    product = get_object_or_404(Product, id=product_id)
+    if product.user_wishlist.filter(id=request.user.id).exists():
+        product.user_wishlist.remove(request.user)
+        messages.success(
+            request,
+            f'{ product.name } removed from your Wishlist'
+        )
+        
+    else:
+        product.user_wishlist.add(request.user)
+        messages.success(
+            request,
+            f'{ product.name } added to your Wishlist'
+        )
+    return HttpResponseRedirect(request.META["HTTP_REFERER"])
+    

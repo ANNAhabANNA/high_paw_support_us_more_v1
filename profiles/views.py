@@ -3,6 +3,8 @@ from django.contrib import messages
 
 from .models import UserProfile
 from .forms import UserProfileForm
+from products.models import Product
+
 
 # User profile views from Boutique Ado
 def profile(request):
@@ -19,12 +21,15 @@ def profile(request):
     # Populates the form with user's current profile information.
     form = UserProfileForm(instance=profile)
     orders = profile.orders.all()
+    # Adds wishlist
+    wishlist = Product.objects.filter(user_wishlist=request.user)
 
     template = 'profiles/user_profile.html'
     context = {
         'form': form,
         'orders': orders,
-        'on_profile_page': True
+        'on_profile_page': True,
+        'wishlist': wishlist
     }
 
     return render(request, template, context)
