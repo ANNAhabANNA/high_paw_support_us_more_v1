@@ -208,5 +208,7 @@ STANDARD_SHIPPING_PERCENTAGE = 10
 STRIPE_CURRENCY = 'eur'
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
-#Webhooks
+# Webhooks
 STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
+# Confirmation emails
+DEFAULT_FROM_EMAIL = 'highpaw@example.com'
