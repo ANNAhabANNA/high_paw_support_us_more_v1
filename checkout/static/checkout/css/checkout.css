@@ -23,7 +23,7 @@
 }
 
 .stripe-style-input::placeholder {
-  color: #aab7c4;
+  color: grey;
 }
 
 .fieldset-label {
@@ -55,6 +55,17 @@
   justify-content: center;
   margin: 0;
   height: 100%;
+}
+
+/*Django countries fields in checkout form*/
+select,
+select option {
+    color: #000000;
+}
+
+select:invalid,
+select option[value=""] {
+    color: grey !important;
 }
 
   
