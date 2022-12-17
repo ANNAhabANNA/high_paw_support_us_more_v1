@@ -30,4 +30,6 @@ urlpatterns = [
     path('bag/', include('bag.urls')),
     # Checkout page 
     path('checkout/', include('checkout.urls')),
+    # User profile page
+    path('profile/', include('profiles.urls')),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
