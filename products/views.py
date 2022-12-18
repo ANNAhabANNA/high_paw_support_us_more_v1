@@ -98,6 +98,31 @@ def add_inventory(request):
 
     return render(request, template, context)
 
+def edit_inventory(request, product_id):
+    """ Edits an inventory item """
+
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        # Instantiates a form if request method is POST
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated inventory!')
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            messages.error(request, 'Failed to update inventory. Please check the form is valid.')
+    else:
+        form = ProductForm(instance=product)
+        messages.info(request, f'You are updating {product.name}')
+
+    template = 'products/edit_inventory.html'
+    context = {
+        'form': form,
+        'product': product,
+    }
+
+    return render(request, template, context)
+
 @login_required
 def add_to_wishlist(request, product_id):
     ''' A view to add or remove products from user's wishlist'''
