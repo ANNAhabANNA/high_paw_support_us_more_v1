@@ -6,7 +6,7 @@ from .forms import UserProfileForm
 from products.models import Product
 
 
-# User profile views from Boutique Ado
+# User profile views based on Boutique Ado
 def profile(request):
     """ Display the user's profile. """
     profile = get_object_or_404(UserProfile, user=request.user)

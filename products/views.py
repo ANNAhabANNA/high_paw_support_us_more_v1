@@ -17,7 +17,7 @@ def all_products(request):
     sort = None
     direction = None
 
-    # Sorting functionality from Boutique Ado project
+    # Sorting functionality based on Boutique Ado project
     if request.GET:
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
