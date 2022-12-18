@@ -37,9 +37,9 @@
                                         <tr>
                                             <td class="p-3 w-25">
                                                 {% if item.product.image %}
-                                                <img class="img-fluid rounded" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                                                <img class="img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
                                                 {% else %}
-                                                <img class="img-fluid rounded" src="{{ MEDIA_URL }}noimage.jpg" alt="{{ item.product.name }}">
+                                                <img class="img-fluid" src="{{ MEDIA_URL }}no-image-icon.jpg" alt="{{ item.product.name }}">
                                                 {% endif %}
                                             </td>
                                             <td class="py-3">
@@ -108,10 +108,10 @@
                                         <tr>
                                             <td colspan="5" class="text-left">
                                                 <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
-                                                    <span class="icon">
+                                                    <span class="icon text-success">
                                                         <i class="fas fa-chevron-left"></i>
                                                     </span>
-                                                    <span class="text-uppercase">Keep Supporting</span>
+                                                    <span class="text-uppercase text-success">Keep Supporting</span>
                                                 </a>
                                                 <a href="{% url 'checkout' %}" class="btn btn-warning btn-block btn-lg" role="button">
                                                     <span class="text-uppercase">Secure Checkout</span>
@@ -126,10 +126,10 @@
                             {% else %}
                                 <p class="lead mb-5">Your bag is empty.</p>
                                 <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
-                                    <span class="icon">
+                                    <span class="icon text-success">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
-                                    <span class="text-uppercase">Keep Supporting</span>
+                                    <span class="text-uppercase text-success">Keep Supporting</span>
                                 </a>
                             {% endif %}
                         </div>

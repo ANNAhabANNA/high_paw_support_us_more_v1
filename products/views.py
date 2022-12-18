@@ -78,7 +78,19 @@ def product_detail(request, product_id):
 
 def add_inventory(request):
     """ Adds a new inventory item """
-    form = ProductForm()
+    
+    # POST handler
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Store inventory has been updated!')
+            return redirect(reverse('add_inventory'))
+        else:
+            messages.error(request, 'Failed to add inventory. Please check the form is valid.')
+    else:
+        form = ProductForm()
+  
     template = 'products/add_inventory.html'
     context = {
         'form': form,

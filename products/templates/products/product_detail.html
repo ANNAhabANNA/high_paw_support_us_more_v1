@@ -23,11 +23,11 @@
                     <div class="col-md-12 p-4">
                         {% if product.image %}
                         <a href="{{ product.image.url }}" target="_blank">
-                            <img class="img-fluid rounded" src="{{ product.image.url }}" alt="{{ product.description }}">
+                            <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
                         </a>
                         {% else %}
-                        <a href="{{ product.image.url }}" target="_blank">
-                            <img class="img-fluid rounded card-img-top" src="{{ MEDIA_URL }}noimage.jpg" alt="{{ product.description }}">
+                        <a href="">
+                            <img class="img-fluid" src="{{ MEDIA_URL }}no-image-icon.jpg" alt="{{ product.name }}">
                         </a>
                         {% endif %}
                         <h5 class="card-title text-uppercase text-dark pt-4">{{product.name}}</h5>
