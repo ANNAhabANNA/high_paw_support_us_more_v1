@@ -7,7 +7,6 @@ from django.contrib.auth.decorators import login_required
 from .models import Product, Category
 from .forms import ProductForm
 
-# Create your views here.
 
 def all_products(request):
     """ A view to show all products, including sorting and search queries """
@@ -64,6 +63,8 @@ def all_products(request):
 
     return render(request, 'products/products.html', context)
 
+
+
 def product_detail(request, product_id):
     """ A view to show individual product details """
 
@@ -76,8 +77,15 @@ def product_detail(request, product_id):
 
     return render(request, 'products/product_detail.html', context)
 
+
+@login_required
 def add_inventory(request):
     """ Adds a new inventory item """
+    
+    # Eliminates unauthorized access
+    if not request.user.is_superuser:
+        messages.error(request, 'You are not authorized.')
+        return redirect(reverse('home'))
     
     # POST handler
     if request.method == 'POST':
@@ -98,8 +106,15 @@ def add_inventory(request):
 
     return render(request, template, context)
 
+
+@login_required
 def edit_inventory(request, product_id):
     """ Updates an inventory item """
+
+    # Eliminates unauthorized access
+    if not request.user.is_superuser:
+        messages.error(request, 'You are not authorized.')
+        return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
@@ -123,17 +138,30 @@ def edit_inventory(request, product_id):
 
     return render(request, template, context)
 
+
+@login_required
 def delete_inventory(request, product_id):
     """ Deletes an inventory item """
+
+    # Eliminates unauthorized access
+    if not request.user.is_superuser:
+        messages.error(request, 'You are not authorized.')
+        return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
     messages.success(request, 'Inventory deleted!')
     return redirect(reverse('products'))
 
+
 @login_required
 def add_to_wishlist(request, product_id):
     ''' A view to add or remove products from user's wishlist'''
+
+    # Eliminates unauthorized access
+    if not request.user.is_superuser:
+        messages.error(request, 'You are not authorized.')
+        return redirect(reverse('home'))
     product = get_object_or_404(Product, id=product_id)
     if product.user_wishlist.filter(id=request.user.id).exists():
         product.user_wishlist.remove(request.user)
