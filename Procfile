@@ -1,0 +1,1 @@
+web: gunicorn high_paw_shop.wsgi:application
