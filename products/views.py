@@ -5,6 +5,7 @@ from django.db.models.functions import Lower
 from django.contrib.auth.decorators import login_required
 
 from .models import Product, Category
+from .forms import ProductForm
 
 # Create your views here.
 
@@ -75,6 +76,16 @@ def product_detail(request, product_id):
 
     return render(request, 'products/product_detail.html', context)
 
+def add_inventory(request):
+    """ Adds a new inventory item """
+    form = ProductForm()
+    template = 'products/add_inventory.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
+
 @login_required
 def add_to_wishlist(request, product_id):
     ''' A view to add or remove products from user's wishlist'''
@@ -93,4 +104,3 @@ def add_to_wishlist(request, product_id):
             f'{ product.name } added to your Wishlist'
         )
     return HttpResponseRedirect(request.META["HTTP_REFERER"])
-    
