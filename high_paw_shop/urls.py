@@ -39,6 +39,8 @@ urlpatterns = [
     path('profile/', include('profiles.urls')),
     # Reviews page
     path('reviews/', include('reviews.urls')),
+    # Subscription page
+    path('subscription/', include('marketing.urls')),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
 handler403 = 'high_paw_shop.views.custom_403_error'

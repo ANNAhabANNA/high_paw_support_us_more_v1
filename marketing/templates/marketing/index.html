@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<section class="h-100 ">
+    <div class="container content-container">
+        <div class="card rounded-3 mb-4">
+            <div class="container">
+                <div>
+                    <hr>
+                    <h2 class="logo-font mb-4">Subscribe to our newsletter</h2>
+                    <h5 class="text-muted">Get Our Newsletter Directly To Your Inbox</h5>
+                    <hr>
+                </div>
+            </div>
+            <section class="bg-warning text-center p-5 mt-4">
+                <div class="form-group">
+                    <form method="post" action="{% url 'subscription' %}">
+                        {% csrf_token %}
+                        <input class="form-control form-control-lg" type="email" name="email" placeholder="Enter Email to Subscribe">
+                        <button type="submit" class="btn btn-success my-2">Submit</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>    
+</section>
+{% endblock %}
