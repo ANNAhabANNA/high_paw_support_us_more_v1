@@ -3,10 +3,12 @@ from .models import Review
 from django.forms import HiddenInput
 
 
+
 class ReviewForm(forms.ModelForm):
+
     class Meta:
         model = Review
-        fields = ['title', 'comment', 'rating']
+        exclude = ('product', 'user', 'date_added')
 
 
 class ApproveForm(forms.ModelForm):

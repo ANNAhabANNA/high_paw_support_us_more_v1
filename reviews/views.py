@@ -12,12 +12,11 @@ from .forms import ReviewForm, ApproveForm
 def all_comments(request):
     """ Shows all comments posted """
 
-    comments = Review.objects.filter(status=1)
+    reviews = Review.objects.filter(status=1)
     context = {
-        'comments': comments,
+        'reviews': reviews,
     }
     return render(request, 'reviews/all_comments.html', context)
-
 
 class AddReview(View):
     """ Adds a comment """
