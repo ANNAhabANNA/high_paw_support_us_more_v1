@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="h-100">
+    <div class="container content-container">
+        <div class="row">
+            <div class="col text-center mt-3">
+                <h1 class="logo-font">Error 500 | Internal Server Error</h1>
+                <hr class="hr-light w-50 mb-2">
+            </div>
+        </div>
+        <div class="my-5">
+            <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
+                <span class="icon text-success">
+                    <i class="fas fa-chevron-left"></i>
+                </span>
+                <span class="text-uppercase text-success">Keep Supporting</span>
+            </a>
+        </div> 
+    </div>
+</section>
+{% endblock %}
