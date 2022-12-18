@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<section class="h-100 ">
+    <div class="container content-container">
+        <div class="card rounded-3 mb-4">
+            <div class="container">
+                <div>
+                    <hr>
+                    <h2 class="logo-font mb-4">Contact Form</h2>
+                    <h5 class="text-muted">Drop Us A Line</h5>
+                    <hr>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center align-items-center">
+                    <form action="{% url 'contact' %}" method="POST">
+                        {% csrf_token %}
+                        {% for field in form %}
+                        {{ field | as_crispy_field}}
+                        {% endfor %}
+                        <input type="submit" value="Submit" class="btn btn-warning btn-lg text-uppercase mb-5">
+                    </form>
+                </div>            
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
