@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .models import UserProfile
 from .forms import UserProfileForm
 from products.models import Product
+from checkout.models import Order
 
 
 # User profile views based on Boutique Ado
@@ -50,7 +51,7 @@ def order_history(request, order_number):
         'A confirmation email was sent on the order date.'
     ))
 
-    template = 'checkout/payment_success.html'
+    template = 'profiles/order_history.html'
     context = {
         'order': order,
         'from_profile': True,
