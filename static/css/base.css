@@ -94,7 +94,7 @@ h5 {
   height: 2px;
 }
 
-/*Star Rating*/
+/*Star Rating from https://github.com/shellieD/get-ducked/ */
 .rate>input {
   display: none;
 }
