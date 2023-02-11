@@ -8,7 +8,7 @@ class ReviewForm(forms.ModelForm):
 
     class Meta:
         model = Review
-        exclude = ('product', 'user', 'date_added')
+        exclude = ('product', 'user', 'date_added', 'slug', 'rating', 'status',)
 
 
 class ApproveForm(forms.ModelForm):
