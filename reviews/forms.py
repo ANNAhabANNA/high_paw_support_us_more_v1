@@ -5,15 +5,7 @@ from django.forms import HiddenInput
 
 
 class ReviewForm(forms.ModelForm):
-
+    """Form to Add Commnents"""
     class Meta:
         model = Review
         exclude = ('product', 'user', 'date_added', 'slug', 'rating', 'status',)
-
-
-class ApproveForm(forms.ModelForm):
-    """Form to Approve Reviews"""
-    class Meta:
-        model = Review
-        fields = ('slug', 'status',)
-        widgets = {'slug': HiddenInput(),}

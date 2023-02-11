@@ -2,12 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from .forms import ReviewForm
 from django.contrib import messages
 from django.views import generic, View
-from django.views.generic.edit import UpdateView, DeleteView
-from django.urls import reverse_lazy
-
 from .models import Review
-from .forms import ReviewForm, ApproveForm
-
 
 def all_comments(request):
     """ Shows all comments posted """
@@ -39,38 +34,3 @@ class AddReview(View):
             messages.error(request, 'Failure! Please check if the form is valid.')
             context = {'form': form}
             return render(request, template, context)
-
-
-class ModerateDeleteReview(DeleteView):
-    """ Deletes a comment """
-
-    model = Review
-    template_name = 'reviews/delete_comment.html'
-    success_url = reverse_lazy('moderate_comment')
-
-
-class ModerateApproveReview(UpdateView):
-    """ Updates a comment from draft to approved """
-
-    model = Review
-    template_name = 'reviews/approve_comment.html'
-    form_class = ApproveForm
-    success_url = reverse_lazy('moderate_comment')
-
-
-class ModerateReviews(generic.ListView):
-    """ Shows comment awaiting approval """
-    template_name = 'reviews/moderate_comment.html'
-    model = Review
-    context_object_name = 'comments'
-
-    def get_queryset(self):
-        return Review.objects.filter(status=0).order_by('-date_created')
-
-
-class ModerateUpdateReview(UpdateView):
-    """ Updates a review """
-    model = Review
-    template_name = 'reviews/update_comment.html'
-    form_class = ReviewForm
-    success_url = reverse_lazy('moderate_comment')
