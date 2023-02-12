@@ -12,27 +12,27 @@ This fictional online store provides users with various products where all proce
 
 * Python
     * The below modules were used for the development of this project
-          * asgiref==3.5.2
-          * boto3==1.26.32
-          * botocore==1.29.32
-          * dj-database-url==0.5.0
-          * Django==3.2
-          * django-allauth==0.41.0
-          * django-countries==7.2.1
-          * django-crispy-forms==1.14.0
-          * django-storages==1.13.1
-          * gunicorn==20.1.0
-          * jmespath==1.0.1
-          * mailchimp-marketing==3.0.80
-          * oauthlib==3.2.2
-          * Pillow==9.3.0
-          * psycopg2==2.9.5
-          * python3-openid==3.2.0
-          * pytz==2022.6
-          * requests-oauthlib==1.3.1
-          * s3transfer==0.6.0
-          * sqlparse==0.4.3
-          * stripe==5.0.0
+         * asgiref==3.5.2
+         * boto3==1.26.32
+         * botocore==1.29.32
+         * dj-database-url==0.5.0
+         * Django==3.2
+         * django-allauth==0.41.0
+         * django-countries==7.2.1
+         * django-crispy-forms==1.14.0
+         * django-storages==1.13.1
+         * gunicorn==20.1.0
+         * jmespath==1.0.1
+         * mailchimp-marketing==3.0.80
+         * oauthlib==3.2.2
+         * Pillow==9.3.0
+         * psycopg2==2.9.5
+         * python3-openid==3.2.0
+         * pytz==2022.6
+         * requests-oauthlib==1.3.1
+         * s3transfer==0.6.0
+         * sqlparse==0.4.3
+         * stripe==5.0.0
 
 * Django
     * Django was used as the main framework for the development of this full stack project.
