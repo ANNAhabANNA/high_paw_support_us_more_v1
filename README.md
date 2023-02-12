@@ -27,9 +27,8 @@ This fictional online store provides users with various products where all proce
   * [Code Validation](#code-validation)
     + [W3C HTML Validation](#w3c-html-validation)
     + [W3C CSS Validation](#w3c-css-validation)
-    + [PEP8 apps.py](#pep8-appspy)
     + [PEP8 forms.py](#pep8-formspy)
-    + [PEP8 models.py](#pep8-modelspy)
+    + [PEP8 context.py](#pep8-contextspy)
     + [PEP8 urls.py](#pep8-urlspy)
 
   * [Manual Testing](#manual-testing)
@@ -161,6 +160,16 @@ ADDITIONAL
 
 #### W3C CSS Validation
 <img src="static/readme_imgs/css_validator.png">
+
+#### PEP8 forms.py
+<img src="static/readme_imgs/form_py_validator.png">
+
+#### PEP8 contexts.py
+<img src="static/readme_imgs/context_py.png">
+
+#### PEP8 urls.py
+<img src="static/readme_imgs/urls_py.png">
+
 
 ## Deployment on Heroku
 
