@@ -1,12 +1,46 @@
 <h1 align=center>HIGH PAW</h1> 
 
-<h2 align=center>Intro</h2> 
+<h2 align=center>INTRODUCTION</h2> 
 
 HIGH PAW is a full-stack, e-commerce website built using the Django Framework with Python, Javascript, HTML and CSS.
 
 This fictional online store provides users with various products where all proceedings go to the charity supporting abandoned dogs. 
 
 [Visit the live site on Heroku](https://highpawsupportusmore.herokuapp.com/)
+
+<h2 align="center"><img src="static/readme_imgs/amiresponsive.png"></h2>
+
+## Table of Content
+ 
+  * [Design](#design)
+    + [Colour Sceme](#colour-scheme)
+    + [Typography](#typography)
+    + [Imagery](#imagery)
+  
+  * [User Stories](#user-stories)
+    + [Site goals](#site-goals)
+    + [Site User](#as-a-site-user)
+    + [Superuser](#as-a-superuser)
+    
+  * [Website Features](#website-features)
+
+  * [Code Validation](#code-validation)
+    + [W3C HTML Validation](#w3c-html-validation)
+    + [W3C CSS Validation](#w3c-css-validation)
+    + [PEP8 apps.py](#pep8-appspy)
+    + [PEP8 forms.py](#pep8-formspy)
+    + [PEP8 models.py](#pep8-modelspy)
+    + [PEP8 urls.py](#pep8-urlspy)
+
+  * [Manual Testing](#manual-testing)
+
+  * [Bugs](#bugs)
+
+  * [Deployment on Heroku](#deployment-on-heroku)
+
+  * [Technologies Used](#technologies-used)
+
+  * [Credits](#credits)
 
 ## Technologies Used
 
@@ -35,8 +69,8 @@ This fictional online store provides users with various products where all proce
          * stripe==5.0.0
 
 * Django
-    * Django was used as the main framework for the development of this full stack project.
-    * Django AllAuth was used for userauthentication. 
+     * Django was used as the main framework for the development of this full stack project.
+     * Django AllAuth was used for userauthentication. 
 
     <br>
     
@@ -60,9 +94,21 @@ This fictional online store provides users with various products where all proce
 * Slack Community
 * StackOverflow
 
-### User Stories 
+## User Stories 
 
-<strong>As a Site User:</strong>
+### Site Goals
+
+* To provide user with a space to search for rubber-ducked themed gifts and products
+* To provide users with a visually pleasing website that is intuitive to use and easy to navigate
+* To provide a website where the purpose is immediately clear
+* To provide role-based permissions that allows users to:
+    - make purchases easily
+    - register for an account
+    - create, read, edit and delete their profiles 
+* To provide role-based permissions that allow super users to:
+    - add, edit and delete products.
+
+### As a Site User
 
 SITE BROWSING
 * I can search for a particular product using a keyword so I can find a specific product.
@@ -88,26 +134,14 @@ ADDITIONAL
 * I can contact the site owner if I wish to know more about a product, the service provided or my order.
 
 
-<strong>As a Super User:</strong>
+### As a Superuser
 
 * I can view each product so I can review the details and price.
 * I can add products so that the website can display new products.
 * I can delete products from the website so that the store inventory is controlled.
 * I can update product details so that the information is updated.
 
-### Site Goals
-
-* To provide user with a space to search for rubber-ducked themed gifts and products
-* To provide users with a visually pleasing website that is intuitive to use and easy to navigate
-* To provide a website where the purpose is immediately clear
-* To provide role-based permissions that allows users to:
-    - make purchases easily
-    - register for an account
-    - create, read, edit and delete their profiles 
-* To provide role-based permissions that allow super users to:
-    - add, edit and delete products.
-
-### Features planned
+## Website Features
 
 * Simple design easy to navigate
 * Intuitive navigation
@@ -120,9 +154,15 @@ ADDITIONAL
 * Custom 404 & 500 error pages
 * User Wishlist 
 
-## Deployment
+## Code Validation
 
-### Heroku Deployment
+#### W3C HTML Validation
+<img src="static/readme_imgs/html_validator.png">
+
+#### W3C CSS Validation
+<img src="static/readme_imgs/css_validator.png">
+
+## Deployment on Heroku
 
 1. Log in to Heroku
 
@@ -200,6 +240,8 @@ Heroku will now build the app for you. Once it has completed the build process y
 5. Change the current working directory to the location where you want the cloned directory to be made. 
 
 6. Type git clone, and then paste the URL you copied in Step 3.
+
+### Stripe payment setup
 
 This project uses Stripe as a payment provider -
 1. Create a stripe account at stripe.com
