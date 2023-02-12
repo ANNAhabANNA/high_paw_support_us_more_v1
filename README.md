@@ -27,6 +27,7 @@ This fictional online store provides users with various products where all proce
   * [Code Validation](#code-validation)
     + [W3C HTML Validation](#w3c-html-validation)
     + [W3C CSS Validation](#w3c-css-validation)
+    + [Lighthouse Validation](#lighthouse-validation)
     + [PEP8 forms.py](#pep8-formspy)
     + [PEP8 context.py](#pep8-contextspy)
     + [PEP8 urls.py](#pep8-urlspy)
@@ -169,6 +170,9 @@ ADDITIONAL
 
 #### PEP8 urls.py
 <img src="static/readme_imgs/urls_py.png">
+
+#### Lighthouse Validation
+<img src="static/readme_imgs/lighthouse_test.png">
 
 
 ## Deployment on Heroku
