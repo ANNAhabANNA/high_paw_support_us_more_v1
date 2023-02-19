@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
+# DEBUG = True
 DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['highpawsupportusmore.herokuapp.com', 'localhost']
@@ -40,15 +40,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Used by the social account app to create the proper callback URLs when connecting via social media accounts
-    # Planned to be used in future features to high_paw_support_us_more_v1 project
+    # Used by the social account app to create the proper callback URLs
+    # when connecting via social media accounts
+    # Planned to be used in
+    # future features to high_paw_support_us_more_v1 project
     'django.contrib.sites',
     'allauth',
-    # Allows all the basic user account functionality (logging in/out, password reset, user registration)
+    # Allows all the basic user account
+    # functionality (logging in/out, password reset, user registration)
     'allauth.account',
     # Handles logging in via social media providers
     'allauth.socialaccount',
-    # Handles home page 
+    # Handles home page
     'home',
     # Handles products page
     'products',
@@ -101,10 +104,11 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 # List of context processors
-                'django.template.context_processors.media',  # allows access to no-image file
+                # Allows access to no-image file
+                'django.template.context_processors.media',
                 'bag.contexts.bag_contents',
             ],
-            # Contains the tags avalable in all crispy form templates by default.
+            # Contains the tags avalable in all crispy templates by default.
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
                 'crispy_forms.templatetags.crispy_forms_field',
@@ -125,12 +129,14 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-# Used by the social account app to create the proper callback URLs when connecting via social media accounts
+# Used by the social account app to create the proper callback URLs
+# when connecting via social media accounts
 SITE_ID = 1
 
 
-# Temporarily logs confirmation emails to any new accounts to the console so that the confirmation links can be obtained
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# Temporarily logs confirmation emails to any new accounts to the console so
+# that the confirmation links can be obtained
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # Tells allauth to allow authentication using either usernames or emails

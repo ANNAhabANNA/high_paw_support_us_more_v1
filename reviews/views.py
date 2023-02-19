@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.views import generic, View
 from .models import Review
 
+
 def all_comments(request):
     """ Shows all comments posted """
 
@@ -12,6 +13,7 @@ def all_comments(request):
         'reviews': reviews,
     }
     return render(request, 'reviews/all_comments.html', context)
+
 
 class AddReview(View):
     """ Adds a comment """
@@ -31,6 +33,7 @@ class AddReview(View):
             messages.success(request, "Thank you! Your comment is submitted.")
             return redirect('home')
         else:
-            messages.error(request, 'Failure! Please check if the form is valid.')
+            messages.error(
+                request, 'Failure! Please check if the form is valid.')
             context = {'form': form}
             return render(request, template, context)

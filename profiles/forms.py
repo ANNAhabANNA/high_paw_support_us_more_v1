@@ -1,6 +1,7 @@
 from django import forms
 from .models import UserProfile
 
+
 # Renders user profile form
 class UserProfileForm(forms.ModelForm):
     class Meta:

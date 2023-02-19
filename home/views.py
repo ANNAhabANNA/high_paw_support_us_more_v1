@@ -7,14 +7,17 @@ from django.contrib import messages
 from .models import Contact
 from .forms import ContactForm
 
-# Create your views here
 
+# Create your views here
 def index(request):
+
     """ Returns the index page """
 
     return render(request, 'home/index.html')
 
+
 def contact(request):
+
     """ Returns the contact page """
 
     if request.method == 'POST':

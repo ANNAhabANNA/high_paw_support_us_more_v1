@@ -18,14 +18,36 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Review',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('slug', models.SlugField(max_length=200, null=True, unique=True)),
-                ('title', models.CharField(blank=True, default='Title', max_length=100)),
-                ('comment', models.TextField(blank=True, default='Leave your comment here', max_length=500)),
-                ('rating', models.IntegerField(default=3, validators=[django.core.validators.MaxValueValidator(5), django.core.validators.MinValueValidator(1)])),
-                ('status', models.IntegerField(choices=[(0, 'Draft'), (1, 'Added')], default=0)),
+                ('id', models.BigAutoField(
+                    auto_created=True,
+                    primary_key=True,
+                    serialize=False,
+                    verbose_name='ID'
+                )),
+                ('slug', models.SlugField(
+                    max_length=200, null=True, unique=True)),
+                ('title', models.CharField(
+                    blank=True, default='Title', max_length=100)),
+                ('comment', models.TextField(
+                    blank=True,
+                    default='Leave your comment here',
+                    max_length=500
+                )),
+                ('rating', models.IntegerField(
+                    default=3,
+                    validators=[
+                        django.core.validators.MaxValueValidator(5),
+                        django.core.validators.MinValueValidator(1)]
+                )),
+                ('status', models.IntegerField(
+                    choices=[(0, 'Draft'), (1, 'Added')], default=0
+                )),
                 ('date_created', models.DateTimeField(auto_now_add=True)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='reviews', to=settings.AUTH_USER_MODEL)),
+                ('user', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    related_name='reviews',
+                    to=settings.AUTH_USER_MODEL
+                )),
             ],
             options={
                 'ordering': ['-date_created'],

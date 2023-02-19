@@ -15,8 +15,8 @@ list_id = settings.MAILCHIMP_EMAIL_LIST_ID
 # Subscription Logic
 def subscribe(email):
     """
-     Contains code handling the communication to the mailchimp api
-     to create a contact/member in an audience/list.
+    Contains code handling the communication to the mailchimp api
+    to create a contact/member in an audience/list.
     """
 
     mailchimp = Client()
@@ -35,13 +35,15 @@ def subscribe(email):
         print("response: {}".format(response))
     except ApiClientError as error:
         print("An exception occurred: {}".format(error.text))
-        
 
-# Views here.
+
 def subscription(request):
+    """
+    Accesses mailchamp services
+    """
     if request.method == "POST":
         email = request.POST['email']
-        subscribe(email)                    # function to access mailchimp
-        messages.success(request, "Email received. thank You! ") # message
+        subscribe(email)
+        messages.success(request, "Email received. thank You! ")
 
     return render(request, "marketing/index.html")

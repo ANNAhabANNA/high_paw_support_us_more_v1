@@ -33,7 +33,7 @@ urlpatterns = [
     path('products/', include('products.urls')),
     # Shopping bag page
     path('bag/', include('bag.urls')),
-    # Checkout page 
+    # Checkout page
     path('checkout/', include('checkout.urls')),
     # User profile page
     path('profile/', include('profiles.urls')),
@@ -41,7 +41,7 @@ urlpatterns = [
     path('reviews/', include('reviews.urls')),
     # Subscription page
     path('subscription/', include('marketing.urls')),
-] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler403 = 'high_paw_shop.views.custom_403_error'
 handler404 = 'high_paw_shop.views.custom_404_error'

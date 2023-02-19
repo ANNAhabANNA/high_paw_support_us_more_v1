@@ -2,15 +2,17 @@ from django import forms
 from .widgets import CustomClearableFileInput
 from .models import Product, Category
 
+
 # Extends builtin forms.ModelForm.
 class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Product
         exclude = ['user_wishlist']
-    
+
     # Utilizes CustomClearableFileInput widget
-    image = forms.ImageField(label='Image', required=False, widget=CustomClearableFileInput)
+    image = forms.ImageField(
+        label='Image', required=False, widget=CustomClearableFileInput)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
