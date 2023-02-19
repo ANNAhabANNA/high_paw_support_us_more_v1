@@ -1,4 +1,10 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import (
+    render,
+    redirect,
+    reverse,
+    get_object_or_404,
+    HttpResponse
+)
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
@@ -12,6 +18,7 @@ from bag.contexts import bag_contents
 
 import stripe
 import json
+
 
 @require_POST
 # Checks if the user had the save info box checked.
@@ -58,7 +65,7 @@ def checkout(request):
         if order_form.is_valid():
             # Prevents multiple saves in the database
             order = order_form.save(commit=False)
-            
+
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
             order.original_bag = json.dumps(bag)
@@ -68,7 +75,8 @@ def checkout(request):
                 try:
                     # Gets product id out of shopping bag
                     product = Product.objects.get(id=item_id)
-                    # If interger then item has no sizes and quantity will be only item_data
+                    # If interger then item has no sizes and
+                    # quantity will be only item_data
                     if isinstance(item_data, int):
                         order_line_item = OrderLineItem(
                             order=order,
@@ -77,7 +85,8 @@ def checkout(request):
                         )
                         order_line_item.save()
                     else:
-                        # Iteration through items with sizes and creation item line accordingly
+                        # Iteration through items with sizes and
+                        # creation item line accordingly
                         for size, quantity in item_data['items_by_size'].items():
                             order_line_item = OrderLineItem(
                                 order=order,
@@ -89,7 +98,7 @@ def checkout(request):
                 # If product is not found  adds error message notification
                 except Product.DoesNotExist:
                     messages.error(request, (
-                        "One of the products in your bag wasn't found in our database. "
+                        "A product in your bag wasn't found in our database. "
                         "Please call us for assistance!")
                     )
                     order.delete()
@@ -97,7 +106,9 @@ def checkout(request):
 
             # User option to save their profile information to the session
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('payment_success', args=[order.order_number]))
+            return redirect(
+                reverse(
+                    'payment_success', args=[order.order_number]))
         else:
             # If order form is not valid
             messages.error(request, 'There was an error with your form. \
@@ -105,9 +116,11 @@ def checkout(request):
     else:
         bag = request.session.get('bag', {})
         if not bag:
-            messages.error(request, "There's nothing in your bag at the moment")
+            messages.error(
+                request,
+                "There's nothing in your bag at the moment")
             return redirect(reverse('products'))
-        
+
         current_bag = bag_contents(request)
         total = current_bag['grand_total']
         stripe_total = round(total * 100)
@@ -118,7 +131,8 @@ def checkout(request):
             currency=settings.STRIPE_CURRENCY,
         )
 
-        # Attempt to prefill the form with any info the user maintains in their profile
+        # Attempt to prefill the form with any info
+        # the user maintains in their profile
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
@@ -141,7 +155,7 @@ def checkout(request):
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. \
             Did you forget to set it in your environment?')
-    
+
     template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,
@@ -150,6 +164,7 @@ def checkout(request):
     }
 
     return render(request, template, context)
+
 
 def payment_success(request, order_number):
     """

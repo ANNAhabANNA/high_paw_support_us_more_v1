@@ -1,6 +1,7 @@
 from django import forms
 from .models import Order
 
+
 # Order form from Boutique Ado project
 class OrderForm(forms.ModelForm):
     class Meta:
@@ -29,15 +30,18 @@ class OrderForm(forms.ModelForm):
             'county': 'County, State or Locality',
         }
 
-        # Starts the cursor in the full name field when the user loads the page.
+        # Starts the cursor in the full name field
+        # when the user loads the page.
         self.fields['full_name'].widget.attrs['autofocus'] = True
-        # Iterates through the forms fields adding a star to the placeholder if it's a required field on the model.
+        # Iterates through the forms fields adding a star to the placeholder
+        # if it's a required field on the model.
         for field in self.fields:
             if field != 'country':
                 if self.fields[field].required:
                     placeholder = f'{placeholders[field]} *'
                 else:
-                    # Sets all the placeholder attributes to their values in the dictionary above.
+                    # Sets all the placeholder attributes
+                    # to their values in the dictionary above.
                     placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder
             # Adds css class.
