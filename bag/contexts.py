@@ -3,6 +3,7 @@ from django.conf import settings
 from django.shortcuts import get_object_or_404
 from products.models import Product
 
+
 def bag_contents(request):
     '''
     Handles the bag items variable
@@ -12,7 +13,8 @@ def bag_contents(request):
     product_count = 0
     bag = request.session.get('bag', {})
 
-    # Iterates through all the items in the bag in order to tally up the total cost and product count.
+    # Iterates through all the items in the bag in order
+    # to tally up the total cost and product count.
     for item_id, item_data in bag.items():
         if isinstance(item_data, int):
             product = get_object_or_404(Product, pk=item_id)
@@ -41,9 +43,7 @@ def bag_contents(request):
     else:
         shipping = 0
         free_shipping_delta = 0
-    
     grand_total = shipping + total
-    
     context = {
         'bag_items': bag_items,
         'total': total,
