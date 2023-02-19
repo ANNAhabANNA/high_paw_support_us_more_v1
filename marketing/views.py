@@ -44,6 +44,6 @@ def subscription(request):
     if request.method == "POST":
         email = request.POST['email']
         subscribe(email)
-        messages.success(request, "Email received. thank You! ")
+        messages.success(request, "Email received. Thank You! ")
 
     return render(request, "marketing/index.html")
