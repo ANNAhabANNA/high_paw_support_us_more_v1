@@ -11,16 +11,27 @@ This fictional online store provides users with various products where all proce
 <h2 align="center"><img src="static/readme_imgs/amiresponsive.png"></h2>
 
 ## Table of Content
- 
-  * [Design](#design)
-    + [Colour Sceme](#colour-scheme)
-    + [Typography](#typography)
-    + [Imagery](#imagery)
-  
+    
+  * [Epic and Theme](#epic-and-theme)
+    + [Epic](#epic)
+    + [Theme](#theme)
+    
   * [User Stories](#user-stories)
     + [Site goals](#site-goals)
     + [Site User](#as-a-site-user)
     + [Superuser](#as-a-superuser)
+    + [Agile](#agile)
+    
+  * [Design](#design)
+  
+  * [Wireframes](#wireframes)
+    + [Home page](#home-page)
+    + [Shop page](#shop-page)
+    + [Registration/Login page](#registrationlogin-page)
+    + [Shopping bag page](#shopping-bag-page)
+    + [Checkout page](#checkout-page)
+    + [Product detail page](#product-detail-page)
+    + [Profile page](#profile-page)
     
   * [Website Features](#website-features)
 
@@ -34,71 +45,27 @@ This fictional online store provides users with various products where all proce
 
   * [Manual Testing](#manual-testing)
 
-  * [Bugs](#bugs)
-
   * [Deployment on Heroku](#deployment-on-heroku)
 
   * [Technologies Used](#technologies-used)
 
   * [Credits](#credits)
 
-## Technologies Used
+## Epic and Theme
 
-* Python
-    * The below modules were used for the development of this project
-         * asgiref==3.5.2
-         * boto3==1.26.32
-         * botocore==1.29.32
-         * dj-database-url==0.5.0
-         * Django==3.2
-         * django-allauth==0.41.0
-         * django-countries==7.2.1
-         * django-crispy-forms==1.14.0
-         * django-storages==1.13.1
-         * gunicorn==20.1.0
-         * jmespath==1.0.1
-         * mailchimp-marketing==3.0.80
-         * oauthlib==3.2.2
-         * Pillow==9.3.0
-         * psycopg2==2.9.5
-         * python3-openid==3.2.0
-         * pytz==2022.6
-         * requests-oauthlib==1.3.1
-         * s3transfer==0.6.0
-         * sqlparse==0.4.3
-         * stripe==5.0.0
+### Theme
 
-* Django
-     * Django was used as the main framework for the development of this full stack project.
-     * Django AllAuth was used for userauthentication. 
+* To sell dog related goods, including accessories, leads, clothing and sponsor dog charity.
 
-    <br>
-    
-* SQLite
-* Stripe
-* Heroku
-* Bootstrap 4
-* Favicon Generator
-* Font Awesome
-* Git
-* GitHub
-* Google Fonts
-* Am I Responsive
-* AWS S3 - static files hosting
+### Epic
 
-### Resources
-
-* Code Institute's Boutique Ado Walkthrough
-* Django Documentation
-* W3C 
-* Slack Community
-* StackOverflow
+* The website will provide the dog lovers  with online shopping for dog related goods: leads, toys and t-shirts with charity logo. Additionally, special gifts are available to sponsor dogs in shelters, including educational visits to school and health checks at vets. The website will have simple and easy to use interface with the goal to make the visitor return.
 
 ## User Stories 
 
 ### Site Goals
 
-* To provide user with a space to search for rubber-ducked themed gifts and products
+* To provide user with a space to search for dog themed gifts and products
 * To provide users with a visually pleasing website that is intuitive to use and easy to navigate
 * To provide a website where the purpose is immediately clear
 * To provide role-based permissions that allows users to:
@@ -141,18 +108,80 @@ ADDITIONAL
 * I can delete products from the website so that the store inventory is controlled.
 * I can update product details so that the information is updated.
 
+### Agile
+
+* The Agile method was appllied to plan this project which was implemented by using Issues and Kanban Board in Github Projects.
+<img src="static/readme_imgs/kanban_agile.png">
+
+During application of Kanban booard in the Projects view in Github the project applied the following progression:
+
+1. Backlog
+2. Current Iteration
+3. In Progress
+4. Done
+
+## Design
+
+* The design is developed with the goal to reflect the charity shop name High Paw - Support Us More and a photo of a dog's paw giving a high five is used as a hero image. The hero image pallette is warm in color mainly including green and brown, hence the website color scheme is picked to match with the choice of brown and yellow.
+
+## Wireframes
+
+### Home page
+<img src="static/readme_imgs/homepage.png">
+
+### Shop page
+<img src="static/readme_imgs/shop_page.png">
+
+### Registration/Login page
+<img src="static/readme_imgs/registration.png">
+ 
+### Shopping bag page
+<img src="static/readme_imgs/checkout.png">
+
+### Checkout page
+<img src="static/readme_imgs/checkout1.png">
+
+### Product detail page
+<img src="static/readme_imgs/product_detail.png">
+
+### Profile page
+<img src="static/readme_imgs/profile.png">
+
 ## Website Features
 
-* Simple design easy to navigate
-* Intuitive navigation
+* Simple design easy to navigate homepage
+<img src="static/readme_imgs/feature1.png">
+
+* Intuitive navigation bar
+<img src="static/readme_imgs/feature2.png">
+
 * Role-based navigation
+<img src="static/readme_imgs/feature3.png">
+
 * Searching bar
+<img src="static/readme_imgs/feature4.png">
+
 * Sorting and Filtering
+<img src="static/readme_imgs/feature5.png">
+
 * User Login/Logout
+<img src="static/readme_imgs/feature6.png">
+
 * Secure payment
+<img src="static/readme_imgs/feature7.png">
+
 * Contact Page
+<img src="static/readme_imgs/feature8.png">
+
 * Custom 404 & 500 error pages
+<img src="static/readme_imgs/feature9.png">
+<img src="static/readme_imgs/error500page.png">
+
+* Reviews page
+<img src="static/readme_imgs/feature10.png">
+
 * User Wishlist 
+<img src="static/readme_imgs/feature11.png">
 
 ## Code Validation
 
@@ -173,6 +202,39 @@ ADDITIONAL
 
 #### Lighthouse Validation
 <img src="static/readme_imgs/lighthouse_test.png">
+
+## Manual Testing
+
+### Registration
+
+* At signup the verification email is sent successfully and alert message appears.
+<img src="static/readme_imgs/signup_testing.png">
+<img src="static/readme_imgs/verification_email.png">
+<img src="static/readme_imgs/activation_link.png">
+
+* Products successfully add to the shopping bag and success message appears. Update shopping bag feature works as intended and success message pops up.
+<img src="static/readme_imgs/adding_bag.png">
+<img src="static/readme_imgs/shopping_bag.png">
+<img src="static/readme_imgs/update_bag.png">
+
+* Placing order works successfully when user fills in address form and card number field. Success message and order summary appear next.Order confirmation is emailed to user as well.
+<img src="static/readme_imgs/checkout_total.png">
+<img src="static/readme_imgs/card_details.png">
+<img src="static/readme_imgs/order_summary.png">
+<img src="static/readme_imgs/order_confirmation.png">
+
+* Profile page successfully renders for authenticated users with address update form, order history and user wishlist.
+<img src="static/readme_imgs/profile1.png">
+<img src="static/readme_imgs/profile2.png">
+<img src="static/readme_imgs/order_history.png">
+
+* Comment section form is submitted successfully and confirmation message appears.
+<img src="static/readme_imgs/comments.png">
+<img src="static/readme_imgs/comment_submitted.png">
+
+* Newsletter subscription submits successfully and alert message appears.
+<img src="static/readme_imgs/temp_email.png">
+<img src="static/readme_imgs/news_message.png">
 
 
 ## Deployment on Heroku
@@ -264,6 +326,58 @@ This project uses Stripe as a payment provider -
 - Configure the settings file to find the variables required by stripe.
 
 For more information on how to set up stripe with Django, please refer to the [Stripe Documentation](www.stripe.com).
+
+## Technologies Used
+
+* Python
+    * The below modules were used for the development of this project
+         * asgiref==3.5.2
+         * boto3==1.26.32
+         * botocore==1.29.32
+         * dj-database-url==0.5.0
+         * Django==3.2
+         * django-allauth==0.41.0
+         * django-countries==7.2.1
+         * django-crispy-forms==1.14.0
+         * django-storages==1.13.1
+         * gunicorn==20.1.0
+         * jmespath==1.0.1
+         * mailchimp-marketing==3.0.80
+         * oauthlib==3.2.2
+         * Pillow==9.3.0
+         * psycopg2==2.9.5
+         * python3-openid==3.2.0
+         * pytz==2022.6
+         * requests-oauthlib==1.3.1
+         * s3transfer==0.6.0
+         * sqlparse==0.4.3
+         * stripe==5.0.0
+
+* Django
+     * Django was used as the main framework for the development of this full stack project.
+     * Django AllAuth was used for userauthentication. 
+
+    <br>
+    
+* SQLite
+* Stripe
+* Heroku
+* Bootstrap 4
+* Favicon Generator
+* Font Awesome
+* Git
+* GitHub
+* Google Fonts
+* Am I Responsive
+* AWS S3 - static files hosting
+
+### Resources
+
+* Code Institute's Boutique Ado Walkthrough
+* Django Documentation
+* W3C 
+* Slack Community
+* StackOverflow
 
 
 ## Credits
