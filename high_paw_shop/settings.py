@@ -65,10 +65,13 @@ INSTALLED_APPS = [
     'reviews',
     # Handles newsletter page
     'marketing',
+    # Handles blog page
+    'blog',
 
     # Other
     'crispy_forms',
     'storages',
+    'django_summernote',
 
 ]
 
