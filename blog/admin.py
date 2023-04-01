@@ -3,7 +3,7 @@ from .models import BlogPost, Comment
 
 
 @admin.register(BlogPost)
-class PostAdmin(admin.ModelAdmin):
+class BlogPostAdmin(admin.ModelAdmin):
 
     list_display = ('tag', 'slug', 'status', 'created_on')
     search_fields = ['tag', 'text']
