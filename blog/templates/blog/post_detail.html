@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block content %}
+{% load crispy_forms_tags %}
 <section class="h-100">
     <div class="container content-container">
         <div class="card rounded-3 mb-4">
@@ -50,6 +51,27 @@
                     {{ comment.body | linebreaks }}
                 </div>
                 {% endfor %}
+            </div>
+            <div class="col-12 d-flex justify-content-center align-items-center">
+                <div class="card-body">
+                    <!-- For later -->
+                    {% if commented %}
+                    <div class="alert alert-success" role="alert">
+                        Your comment is awaiting approval
+                    </div>
+                    {% else %}
+                    {% if user.is_authenticated %}
+    
+                    <h3>Leave a comment:</h3>
+                    <p>Posting as: {{ user.username }}</p>
+                    <form method="POST" style="margin-top: 1.3em;">
+                        {{ comment_form | crispy }}
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-warning btn-block btn-lg mb-5">Submit</button>
+                    </form>
+                    {% endif %}
+                    {% endif %}
+                </div>
             </div>
         </div>  
     </div>
