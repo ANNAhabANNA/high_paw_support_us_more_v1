@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+
+{% endblock %}
+
+{% block content %}
+<section class="h-100">
+    <div class="container content-container">
+        <div class="card rounded-3 mb-4">
+            <div class="container">
+                <div>
+                    <hr>
+                    <h2 class="logo-font mb-4">{{ post.tag }}</h2>
+                    <h5 class="text-muted">{{ post.creator }} | {{ post.created_on }}</h5>
+                    <hr>
+                </div>
+            </div>
+        <div>
+        <div class="container">
+            <div class="card-body">
+                <p class="card-text">
+                    {{ post.text | safe }}
+                </p>
+                <div class="row">
+                    <div class="col-1">
+                        <strong class="text-secondary"><i class="far fa-heart"></i> {{ post.total_of_likes }} </strong>
+                    </div>
+                    <div class="col-1">
+                        {% with comments.count as total_comments %}
+                        <strong class="text-secondary"><i class="far fa-comments"></i>
+                            {{ total_comments }}</strong>
+                        {% endwith %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 card mb-3 mt-1">
+            <h3>Comments:</h3>
+            <div class="card-body">
+                {% for comment in comments %}
+                <div class="comments" style="padding: 10px;">
+                    <p class="font-weight-bold">
+                        {{ comment.name }}
+                        <span class=" text-muted font-weight-normal">
+                            {{ comment.created_on }}
+                        </span> wrote:
+                    </p>
+                    {{ comment.body | linebreaks }}
+                </div>
+                {% endfor %}
+            </div>
+        </div>  
+    </div>
+</section>
+
+{% endblock content %}
