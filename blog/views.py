@@ -1,8 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from .models import BlogPost
 from django.views.generic import ListView
 from .forms import CommentBlogForm
+from django.http import HttpResponseRedirect
 
 
 class BlogList(ListView):
@@ -33,7 +34,7 @@ class PostDetail(View):
                 'comment_form': CommentBlogForm()
             },
         )
-    
+
     def post(self, request, slug, *args, **kwargs):
 
         blogpost_collection = BlogPost.objects.filter(status=1)
@@ -64,3 +65,14 @@ class PostDetail(View):
                 "liked": liked
             },
         )
+
+class PostLike(View):
+    """Creates the post like/unlike functionality"""
+    def post(self, request, slug, *args, **kwargs):
+        post = get_object_or_404(BlogPost, slug=slug)
+        if post.likes.filter(id=request.user.id).exists():
+            post.likes.remove(request.user)
+        else:
+            post.likes.add(request.user)
+
+        return HttpResponseRedirect(reverse('post_detail', args=[slug]))
