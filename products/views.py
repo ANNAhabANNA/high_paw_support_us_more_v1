@@ -173,7 +173,7 @@ def add_to_wishlist(request, product_id):
     ''' A view to add or remove products from user's wishlist'''
 
     # Eliminates unauthorized access
-    if not request.user.is_superuser:
+    if not request.user.is_authenticated:
         messages.error(request, 'You are not authorized.')
         return redirect(reverse('home'))
     product = get_object_or_404(Product, id=product_id)
