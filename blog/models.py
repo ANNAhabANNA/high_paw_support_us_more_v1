@@ -6,10 +6,15 @@ STATUS = ((0, "Draft"), (1, "Published"))
 
 
 class BlogPost(models.Model):
+    '''
+    Creates an object of a post
+    '''
     tag = models.CharField(max_length=210, unique=True)
     slug = models.SlugField(max_length=210, unique=True)
     creator = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="blog_posts"
+        User, 
+        on_delete=models.CASCADE, 
+        related_name="blog_posts"
     )
     image = models.ImageField(null=True, blank=True)
     excerpt = models.TextField(blank=True)
@@ -18,7 +23,10 @@ class BlogPost(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(
-        User, related_name='blogpost_like', blank=True)
+        User, 
+        related_name='blogpost_like', 
+        blank=True
+    )
 
     class Meta:
         ordering = ["-created_on"]
@@ -31,6 +39,10 @@ class BlogPost(models.Model):
 
 
 class Comment(models.Model):
+    '''
+    Creates an object of a comment
+
+    '''
     post = models.ForeignKey(BlogPost, on_delete=models.CASCADE,
                              related_name="comments")
     name = models.CharField(max_length=75)

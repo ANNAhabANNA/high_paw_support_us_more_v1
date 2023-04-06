@@ -11,6 +11,9 @@ STATUS = ((0, "Draft"), (1, "Added"))
 
 
 class Review(models.Model):
+    '''
+    Creates an object of a review
+    '''
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="reviews")
     product = models.ForeignKey(

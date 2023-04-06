@@ -8,6 +8,7 @@ from django.http import HttpResponseRedirect
 
 class BlogList(ListView):
     """Creates the post on the blog"""
+
     model = BlogPost
     blogpost_collection = BlogPost.objects.filter(status=1).order_by("-created_on")
     template_name = 'blog/blog.html'
@@ -15,6 +16,7 @@ class BlogList(ListView):
 
 class PostDetail(View):
     """Renders the detailed view of each post including comments"""
+
     def get(self, request, slug, *args, **kwargs):
         blogpost_collection = BlogPost.objects.filter(status=1)
         post = get_object_or_404(blogpost_collection, slug=slug)
@@ -68,6 +70,7 @@ class PostDetail(View):
 
 class PostLike(View):
     """Creates the post like/unlike functionality"""
+    
     def post(self, request, slug, *args, **kwargs):
         post = get_object_or_404(BlogPost, slug=slug)
         if post.likes.filter(id=request.user.id).exists():
