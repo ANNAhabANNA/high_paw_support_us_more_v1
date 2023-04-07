@@ -43,6 +43,7 @@ urlpatterns = [
     path('subscription/', include('marketing.urls')),
     # Blog page
     path('blog/', include('blog.urls')),
+    path('poll/', include('poll.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler403 = 'high_paw_shop.views.custom_403_error'

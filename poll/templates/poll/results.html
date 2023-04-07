@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block page_header %}
+
+{% endblock %}
+
+{% block content %}
+
+<section class="h-100 ">
+    <div class="container content-container">
+        <div class="card rounded-3 mb-4">
+            <div class="container">
+                <div>
+                    <hr>
+                    <h2 class="logo-font mb-4">Poll</h2>
+                    <h5 class="text-muted">See how many people support charity in the local community</h5>
+                    <hr>
+                </div>
+            </div>
+            <div class="bg-warning text-center p-5 mt-4">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Poll Result</h3>
+                </div>
+                <div class="panel-body">
+                    <h3>{{ poll.question }}</h3>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">{{ poll.option_one }} &mdash; <strong>{{ poll.option_one_count }}</strong></li>
+                    <li class="list-group-item">{{ poll.option_two }} &mdash; <strong>{{ poll.option_two_count }}</strong></li>
+                    <li class="list-group-item">{{ poll.option_three }} &mdash; <strong>{{ poll.option_three_count }}</strong></li>
+                </ul>
+                <div class="panel-footer">
+                    Total &mdash; <strong>{{ poll.total }}</strong>
+                </div>
+                <div class="col-12">
+                    <a href="{% url 'home' %}" class="btn btn-outline-black rounded-0 mt-5">
+                        <span class="icon text-success">
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span class="text-uppercase text-success">Keep Supporting</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>    
+</section>
+{% endblock %}
