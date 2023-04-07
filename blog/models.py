@@ -8,6 +8,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 class BlogPost(models.Model):
     '''
     Creates an object of a post
+    Customized from I Think Therefore I Blog project
     '''
     tag = models.CharField(max_length=210, unique=True)
     slug = models.SlugField(max_length=210, unique=True)
@@ -41,6 +42,7 @@ class BlogPost(models.Model):
 class Comment(models.Model):
     '''
     Creates an object of a comment
+     Customized from I Think Therefore I Blog project
 
     '''
     post = models.ForeignKey(BlogPost, on_delete=models.CASCADE,
